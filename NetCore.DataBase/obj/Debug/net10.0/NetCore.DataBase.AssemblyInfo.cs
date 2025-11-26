@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("NetCore.DataBase")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+059307a1ffd9ee99e1943b7293d1b64403d13c1f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1a7625062819d0d405a0d8316c3aa82a6e680635")]
 [assembly: System.Reflection.AssemblyProductAttribute("NetCore.DataBase")]
 [assembly: System.Reflection.AssemblyTitleAttribute("NetCore.DataBase")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
