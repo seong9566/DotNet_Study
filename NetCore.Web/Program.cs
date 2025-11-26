@@ -1,5 +1,9 @@
+using NetCore_Services.Data;
 using NetCore_Services.Interfaces;
 using NetCore_Services.Svcs;
+using Microsoft.EntityFrameworkCore;
+using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +15,17 @@ builder.Services.AddControllersWithViews();
 // IUser에는 함수명 , 파라미터만 작성
 // UserService에서는 IUser 에서 선언한 함수의 구현부가 있음.
 builder.Services.AddScoped<IUser,UserService>();
+
+// configuration 선언이 필요
+var configuration = builder.Configuration;
+// DBMS를 연결 하기 위한 서비스 등록
+// Database 접속 정보 , Migrations 프로젝트 지정 
+builder.Services.AddDbContext<DBFirstDbContext>(options =>
+{
+    var connectionString = configuration.GetConnectionString("DefaultConnection");
+    options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
+});
+
 
 var app = builder.Build();
 

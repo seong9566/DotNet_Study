@@ -1,0 +1,15 @@
+/Users/stecdev/RiderProjects/study/NetCore.DataBase/bin/Debug/net10.0/NetCore.DataBase.deps.json
+/Users/stecdev/RiderProjects/study/NetCore.DataBase/bin/Debug/net10.0/NetCore.DataBase.runtimeconfig.json
+/Users/stecdev/RiderProjects/study/NetCore.DataBase/bin/Debug/net10.0/NetCore.DataBase.dll
+/Users/stecdev/RiderProjects/study/NetCore.DataBase/bin/Debug/net10.0/NetCore.DataBase.pdb
+/Users/stecdev/RiderProjects/study/NetCore.DataBase/obj/Debug/net10.0/NetCore.DataBase.GeneratedMSBuildEditorConfig.editorconfig
+/Users/stecdev/RiderProjects/study/NetCore.DataBase/obj/Debug/net10.0/NetCore.DataBase.AssemblyInfoInputs.cache
+/Users/stecdev/RiderProjects/study/NetCore.DataBase/obj/Debug/net10.0/NetCore.DataBase.AssemblyInfo.cs
+/Users/stecdev/RiderProjects/study/NetCore.DataBase/obj/Debug/net10.0/NetCore.DataBase.csproj.CoreCompileInputs.cache
+/Users/stecdev/RiderProjects/study/NetCore.DataBase/obj/Debug/net10.0/NetCore.DataBase.sourcelink.json
+/Users/stecdev/RiderProjects/study/NetCore.DataBase/obj/Debug/net10.0/NetCore.DataBase.dll
+/Users/stecdev/RiderProjects/study/NetCore.DataBase/obj/Debug/net10.0/refint/NetCore.DataBase.dll
+/Users/stecdev/RiderProjects/study/NetCore.DataBase/obj/Debug/net10.0/NetCore.DataBase.pdb
+/Users/stecdev/RiderProjects/study/NetCore.DataBase/obj/Debug/net10.0/NetCore.DataBase.genruntimeconfig.cache
+/Users/stecdev/RiderProjects/study/NetCore.DataBase/obj/Debug/net10.0/ref/NetCore.DataBase.dll
+/Users/stecdev/RiderProjects/study/NetCore.DataBase/obj/Debug/net10.0/NetCore.DataBase.csproj.AssemblyReference.cache

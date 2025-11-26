@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetCore.Services", "NetCore
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetCore.Data", "NetCore.Data\NetCore.Data.csproj", "{8F4B51A1-0449-4336-A124-ED9F7C98EE90}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetCore.DataBase", "NetCore.DataBase\NetCore.DataBase.csproj", "{A4978CB7-419C-4087-8A0D-D089608DA9F5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{8F4B51A1-0449-4336-A124-ED9F7C98EE90}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8F4B51A1-0449-4336-A124-ED9F7C98EE90}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8F4B51A1-0449-4336-A124-ED9F7C98EE90}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4978CB7-419C-4087-8A0D-D089608DA9F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4978CB7-419C-4087-8A0D-D089608DA9F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4978CB7-419C-4087-8A0D-D089608DA9F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4978CB7-419C-4087-8A0D-D089608DA9F5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

@@ -1,0 +1,32 @@
+@model NetCore_Data.ViewModels.LoginInfo
+
+@{
+    ViewData["Title"] = "로그인";
+    Layout = "_Layout";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-controller="Membership" asp-action="LogIn" method="post" class="mt-3">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    @Html.AntiForgeryToken()
+
+    <div class="mb-3">
+        <label asp-for="UserName" class="form-label"></label>
+        <input asp-for="UserName" class="form-control" />
+        <span asp-validation-for="UserName" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="UserPassword" class="form-label"></label>
+        <input asp-for="UserPassword" type="password" class="form-control" />
+        <span asp-validation-for="UserPassword" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">로그인</button>
+    <a class="btn btn-secondary ms-2" asp-controller="Membership" asp-action="Index">뒤로가기</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

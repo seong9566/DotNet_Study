@@ -1,0 +1,13 @@
+/Users/stecdev/RiderProjects/study/NetCore.Migrations/bin/Debug/net10.0/NetCore.Migrations.deps.json
+/Users/stecdev/RiderProjects/study/NetCore.Migrations/bin/Debug/net10.0/NetCore.Migrations.dll
+/Users/stecdev/RiderProjects/study/NetCore.Migrations/bin/Debug/net10.0/NetCore.Migrations.pdb
+/Users/stecdev/RiderProjects/study/NetCore.Migrations/obj/Debug/net10.0/NetCore.Migrations.GeneratedMSBuildEditorConfig.editorconfig
+/Users/stecdev/RiderProjects/study/NetCore.Migrations/obj/Debug/net10.0/NetCore.Migrations.AssemblyInfoInputs.cache
+/Users/stecdev/RiderProjects/study/NetCore.Migrations/obj/Debug/net10.0/NetCore.Migrations.AssemblyInfo.cs
+/Users/stecdev/RiderProjects/study/NetCore.Migrations/obj/Debug/net10.0/NetCore.Migrations.csproj.CoreCompileInputs.cache
+/Users/stecdev/RiderProjects/study/NetCore.Migrations/obj/Debug/net10.0/NetCore.Migrations.sourcelink.json
+/Users/stecdev/RiderProjects/study/NetCore.Migrations/obj/Debug/net10.0/NetCore.Migrations.dll
+/Users/stecdev/RiderProjects/study/NetCore.Migrations/obj/Debug/net10.0/refint/NetCore.Migrations.dll
+/Users/stecdev/RiderProjects/study/NetCore.Migrations/obj/Debug/net10.0/NetCore.Migrations.pdb
+/Users/stecdev/RiderProjects/study/NetCore.Migrations/obj/Debug/net10.0/ref/NetCore.Migrations.dll
+/Users/stecdev/RiderProjects/study/NetCore.Migrations/obj/Debug/net10.0/NetCore.Migrations.csproj.AssemblyReference.cache

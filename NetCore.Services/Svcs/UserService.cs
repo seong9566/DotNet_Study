@@ -1,5 +1,7 @@
+using System.Drawing.Printing;
 using NetCore_Data.DataModels;
 using NetCore_Data.ViewModels;
+using NetCore_Services.Data;
 using NetCore_Services.Interfaces;
 
 namespace NetCore_Services.Svcs;
@@ -10,24 +12,31 @@ namespace NetCore_Services.Svcs;
 /// </summary>
 public class UserService : IUser
 {
-    private IUser _userImplementation;
+    // private IUser _userImplementation;
+    private readonly DBFirstDbContext _context;
+
+    public UserService(DBFirstDbContext dbContext)
+    {
+        _context = dbContext;
+    }
 
     // region : 외부에서 사용 하지 않을 private 함수들은 #region - #endregion 묶어준다.
     #region private methods
     // DB에서 사용자 정보를 가져오는 함수
     // User : 데이터 베이스에서 가져온 값
     private IEnumerable<User> GetUserInfos()
+
     {
-        return new List<User>()
+        
+        
+        var users = _context.User.ToList();
+
+        foreach (var user in users)
         {
-            new User
-            {
-                UserId = "testId",
-                UserName = "테스트",
-                UserEmail = "test@gmail.com",
-                Password = "1234",
-            }
-        };
+            Console.WriteLine($"UserId: {user.UserId}, UserName: {user.UserName}, Email: {user.UserEmail}");
+        }
+
+        return users;
     }
 
 
