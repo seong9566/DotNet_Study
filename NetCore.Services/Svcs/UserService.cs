@@ -1,8 +1,7 @@
-using System.Drawing.Printing;
-using NetCore_Data.DataModels;
 using NetCore_Data.ViewModels;
 using NetCore_Services.Data;
 using NetCore_Services.Interfaces;
+using NetCore.DataBase.Data.DBModels;
 
 namespace NetCore_Services.Svcs;
 
@@ -13,9 +12,9 @@ namespace NetCore_Services.Svcs;
 public class UserService : IUser
 {
     // private IUser _userImplementation;
-    private readonly DBFirstDbContext _context;
+    private readonly DbFirstDbContext _context;
 
-    public UserService(DBFirstDbContext dbContext)
+    public UserService(DbFirstDbContext dbContext)
     {
         _context = dbContext;
     }

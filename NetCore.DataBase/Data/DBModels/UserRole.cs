@@ -6,6 +6,7 @@ namespace NetCore.DataBase.Data.DBModels;
 
 public partial class UserRole
 { 
+    [Key]
     public string RoleId { get; set; } = null!;
 
     public string RoleName { get; set; } = null!;

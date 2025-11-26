@@ -54,9 +54,6 @@ public class MembershipController : Controller
     {
         
         string message = string.Empty;
-        var userName = "test";
-        var userPassword = "1234";
-        
         
         if (ModelState.IsValid)
         {

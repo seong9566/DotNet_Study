@@ -20,7 +20,7 @@ builder.Services.AddScoped<IUser,UserService>();
 var configuration = builder.Configuration;
 // DBMS를 연결 하기 위한 서비스 등록
 // Database 접속 정보 , Migrations 프로젝트 지정 
-builder.Services.AddDbContext<DBFirstDbContext>(options =>
+builder.Services.AddDbContext<DbFirstDbContext>(options =>
 {
     var connectionString = configuration.GetConnectionString("DefaultConnection");
     options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
