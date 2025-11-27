@@ -3,11 +3,8 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Primitives;
 using NetCore_Data.ViewModels;
 using NetCore_Services.Interfaces;
-using NetCore_Services.Svcs;
-using study.Models;
 
 namespace study.Controllers;
 
