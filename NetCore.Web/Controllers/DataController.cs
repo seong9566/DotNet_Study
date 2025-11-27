@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Mvc;
 using NetCore_Data.ViewModels;
@@ -16,6 +17,7 @@ namespace study.Controllers
 
         // GET: DataController
         [HttpGet]
+        [Authorize(Roles = "GeneralUser,SuperUser,SystemUser")]
         public ActionResult AES()
         {
             return View();

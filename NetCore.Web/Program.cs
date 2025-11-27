@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.EntityFrameworkCore;
 using NetCore.DataBase.Data.Repository;
@@ -10,6 +11,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+// HttpContextAccessor 의존성 주입
+builder.Services.AddHttpContextAccessor();
 
 // .NET 10 기준 의존성 주입 방식
 // IUser 인터페이스에 UserService 클래스 인스턴스 주입
@@ -27,12 +30,23 @@ builder.Services.AddDbContext<WorksContext>(options =>
     options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
 });
 
+
+
 Common.SetDataProtection(
     builder,
     "/Users/stecdev/dp-keys",   // Mac 기준 경로로 변경
     "NetCore",
     Enums.CryptoType.Unmanaged  // Cng CBC는 Mac에서 동작 안 함
 );
+// 신원 보증 및 승인권한 추가 
+builder.Services.AddAuthentication(defaultScheme: CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(options =>
+    {
+        // 접근 방지 페이지 
+        options.AccessDeniedPath = "/Membership/Forbidden";
+        // 로그인 경로 지정 
+        options.LoginPath = "/Membership/Login";
+    });
 
 var app = builder.Build();
 
@@ -45,16 +59,20 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseStaticFiles();
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
-app.MapStaticAssets();
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.MapControllerRoute(
-        name: "default",
-        pattern: "{controller=Home}/{action=Index}/{id?}")
-    .WithStaticAssets();
+    name: "login-shortcut",
+    pattern: "Login",
+    defaults: new { controller = "Membership", action = "Login" });
 
 
 app.Run();

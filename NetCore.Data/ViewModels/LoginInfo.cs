@@ -15,4 +15,7 @@ public class LoginInfo
     [Display(Name = "사용자 비밀번호")]
     public string UserPassword { get; set; }
     
+    [Display(Name = "내 정보 기억")]
+    public bool RememberMe{get;set;}
+    
 }

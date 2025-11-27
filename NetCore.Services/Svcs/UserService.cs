@@ -72,6 +72,27 @@ public class UserService : IUser
         return user;
     }
 
+    private User GetUserInfo(string userId)
+    {
+        return _context.Users.Where(u => u.UserId.Equals(userId)).FirstOrDefault();
+    }
+
+    private IEnumerable<UserRolesByUser> GetUserRolesByUserInfos(string userId)
+    {
+        var userRolesByUserInfos = _context.UserRolesByUsers.Where(uru => uru.UserId.Equals(userId)).ToList();
+
+        foreach (var role in userRolesByUserInfos)
+        {
+            role.Role = GetUserRole(role.RoleId);
+        }
+        return userRolesByUserInfos.OrderByDescending(uru=> uru.Role.RolePriority);
+    }
+
+    private UserRole GetUserRole(string roleId)
+    {
+        return _context.UserRoles.Where(ur => ur.RoleId.Equals(roleId)).FirstOrDefault();
+    }
+
 
     // ID,PW 체크 함수
     private bool checkUserInfo(string userId, string password)
@@ -90,5 +111,15 @@ public class UserService : IUser
     bool IUser.MatchTheUserInfo(LoginInfo loginInfo)
     {
         return checkUserInfo(loginInfo.UserName, loginInfo.UserPassword);
+    }
+
+    User IUser.GetUserInfo(string userId)
+    {
+        return GetUserInfo(userId);
+    }
+    
+    IEnumerable<UserRolesByUser> IUser.GetRolesOwnedByUser(string userId)
+    {
+        return GetUserRolesByUserInfos(userId);
     }
 }

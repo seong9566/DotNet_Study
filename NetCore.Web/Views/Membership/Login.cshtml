@@ -7,9 +7,10 @@
 
 <h2>@ViewData["Title"]</h2>
 
-<form asp-controller="Membership" asp-action="LogIn" method="post" class="mt-3">
+<form asp-action="Login" asp-controller="Membership" method="post" asp-route-returnurl="@ViewData["ReturnUrl"]">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
     @Html.AntiForgeryToken()
+    <input type="hidden" name="returnUrl" value="@(ViewData["ReturnUrl"] ?? string.Empty)" />
 
     <div class="mb-3">
         <label asp-for="UserName" class="form-label"></label>
@@ -23,8 +24,14 @@
         <span asp-validation-for="UserPassword" class="text-danger"></span>
     </div>
 
+    <div class="form-check mb-3">
+        <input asp-for="RememberMe" class="form-check-input" type="checkbox" id="RememberMe" />
+        <label class="form-check-label" asp-for="RememberMe"></label>
+    </div>
+
     <button type="submit" class="btn btn-primary">로그인</button>
     <a class="btn btn-secondary ms-2" asp-controller="Membership" asp-action="Index">뒤로가기</a>
+    <p style="padding-top: 10px"><a asp-route-returnurl="@ViewData["ReturnUrl"]" asp-controller="Membership" asp-action="Register" class btn btn-primary btn-block>멤버십 사용자 가입</a></p>
 </form>
 
 @section Scripts {
