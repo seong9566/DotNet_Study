@@ -1,8 +1,8 @@
 using Microsoft.EntityFrameworkCore;
-using NetCore_Data.ViewModels;
-using NetCore_Services.Data;
-using NetCore_Services.Interfaces;
 using NetCore.DataBase.Data.DBModels;
+using NetCore.DataBase.Data.Repository;
+using NetCore_Data.ViewModels;
+using NetCore_Services.Interfaces;
 
 namespace NetCore_Services.Svcs;
 
@@ -13,9 +13,9 @@ namespace NetCore_Services.Svcs;
 public class UserService : IUser
 {
     // private IUser _userImplementation;
-    private readonly DbFirstDbContext _context;
+    private readonly WorksContext _context;
 
-    public UserService(DbFirstDbContext dbContext)
+    public UserService(WorksContext dbContext)
     {
         _context = dbContext;
     }
@@ -27,7 +27,7 @@ public class UserService : IUser
     private IEnumerable<User> GetUserInfos()
 
     {
-        var users = _context.User.ToList();
+        var users = _context.Users.ToList();
 
         foreach (var user in users)
         {
@@ -41,7 +41,7 @@ public class UserService : IUser
     {
         User? user;
         // FromSql을 사용할땐 컬럼 값이 모두 들어가야 함. userId/password는 파라미터로 전달해 SQL 인젝션을 방지.
-        user = _context.User
+        user = _context.Users
             .FromSqlInterpolated($@"SELECT UserId,
                                            UserName,
                                            UserEmail,

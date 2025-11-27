@@ -1,0 +1,81 @@
+@model NetCore_Data.ViewModels.AesInfo
+
+@{
+    ViewData["Title"] = "AES 암복호화";
+    Layout = "_Layout";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+@if (ViewData["Message"] is string msg && !string.IsNullOrWhiteSpace(msg))
+{
+    <div class="alert alert-success" role="alert">@msg</div>
+}
+
+<form asp-action="AES" asp-controller="Data" method="post" class="mt-3" id="aesForm">
+    @Html.AntiForgeryToken()
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div class="mb-3">
+        <label asp-for="UserId" class="form-label"></label>
+        <input asp-for="UserId" class="form-control" />
+        <span asp-validation-for="UserId" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="UserPassword" class="form-label"></label>
+        <div class="input-group">
+            <input asp-for="UserPassword" type="password" class="form-control" id="UserPassword" />
+            <button type="button" class="btn btn-outline-secondary" id="btnGenerate">암호 생성하기</button>
+        </div>
+        <span asp-validation-for="UserPassword" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">암복호화 실행</button>
+</form>
+
+<div class="mt-4">
+    <div class="mb-3">
+        <label asp-for="EncUserInfo" class="form-label"></label>
+        <div class="input-group">
+            <textarea asp-for="EncUserInfo" class="form-control" rows="3" readonly id="EncUserInfo"></textarea>
+            <button type="button" class="btn btn-outline-secondary" id="btnCopy">암호 복사하기</button>
+        </div>
+    </div>
+    <div class="mb-3">
+        <label asp-for="DecUserInfo" class="form-label"></label>
+        <input asp-for="DecUserInfo" class="form-control" readonly id="DecUserInfo" />
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        (function () {
+            const pwdInput = document.getElementById('UserPassword');
+            const btnGenerate = document.getElementById('btnGenerate');
+            const btnCopy = document.getElementById('btnCopy');
+            const encField = document.getElementById('EncUserInfo');
+
+            btnGenerate?.addEventListener('click', () => {
+                const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+                let result = '';
+                for (let i = 0; i < 16; i++) {
+                    result += chars.charAt(Math.floor(Math.random() * chars.length));
+                }
+                pwdInput.value = result;
+            });
+
+            btnCopy?.addEventListener('click', async () => {
+                if (!encField.value) return;
+                try {
+                    await navigator.clipboard.writeText(encField.value);
+                    btnCopy.textContent = '복사됨';
+                    setTimeout(() => { btnCopy.textContent = '암호 복사하기'; }, 1200);
+                } catch (e) {
+                    console.error('copy failed', e);
+                }
+            });
+        })();
+    </script>
+}

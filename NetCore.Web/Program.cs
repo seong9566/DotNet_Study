@@ -1,8 +1,9 @@
-using NetCore_Services.Data;
+using Microsoft.AspNetCore.DataProtection;
+using Microsoft.EntityFrameworkCore;
+using NetCore.DataBase.Data.Repository;
 using NetCore_Services.Interfaces;
 using NetCore_Services.Svcs;
-using Microsoft.EntityFrameworkCore;
-using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
+using NetCore.Utilities.Utils;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -16,16 +17,22 @@ builder.Services.AddControllersWithViews();
 // UserService에서는 IUser 에서 선언한 함수의 구현부가 있음.
 builder.Services.AddScoped<IUser,UserService>();
 
-// configuration 선언이 필요
+
 var configuration = builder.Configuration;
+
 // DBMS를 연결 하기 위한 서비스 등록
-// Database 접속 정보 , Migrations 프로젝트 지정 
-builder.Services.AddDbContext<DbFirstDbContext>(options =>
+builder.Services.AddDbContext<WorksContext>(options =>
 {
     var connectionString = configuration.GetConnectionString("DefaultConnection");
     options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
 });
 
+Common.SetDataProtection(
+    builder,
+    "/Users/stecdev/dp-keys",   // Mac 기준 경로로 변경
+    "NetCore",
+    Enums.CryptoType.Unmanaged  // Cng CBC는 Mac에서 동작 안 함
+);
 
 var app = builder.Build();
 
